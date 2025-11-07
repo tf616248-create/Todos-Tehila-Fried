@@ -1,0 +1,57 @@
+import axios from "axios";
+
+const apiUrl = "http://localhost:5024/api";
+
+// יצירת instance של axios
+const apiClient = axios.create({
+  baseURL: apiUrl,
+  withCredentials: true
+});
+
+// --- מוסיפים JWT ל־headers אם קיים ---
+apiClient.interceptors.request.use(config => {
+  const token = localStorage.getItem("token"); // שם זהה לשימוש שלך בלוגין
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// --- Interceptor לטיפול בשגיאות 401 ---
+apiClient.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response && error.response.status === 401) {
+      console.warn("Unauthorized! Redirecting to login...");
+      window.location.href = "/login";
+    }
+    return Promise.reject(error);
+  }
+);
+
+export const api = {
+  // רישום משתמש חדש
+  register(username, password) {
+    return apiClient.post("/users/register", { username, password });
+  },
+  
+  // התחברות משתמש
+  login(username, password) {
+    return apiClient.post("/users/login", { username, password }, { withCredentials: true });
+  },
+
+  // שליפת משימות (דורש JWT)
+  getTasks: async () => {
+    const res = await apiClient.get("/items");
+    return res.data;
+  },
+
+  // הוספת משימה חדשה
+  addTask: async (name) => {
+    const res = await apiClient.post("/items", { name, isComplete: false });
+    return res.data;
+  },
+  setCompleted: async (id, isComplete) => {
+    return apiClient.patch(`/items/${id}`, { isComplete });
+  },
+};
