@@ -1,13 +1,11 @@
-# Node / React
-node_modules/
-build/
-dist/
-*.log
-.env
+# React
+ToDoListReact/node_modules/
+ToDoListReact/build/
 
 # .NET
-bin/
-obj/
+TodoApi/bin/
+TodoApi/obj/
+TodoApi/.vs/
+
+# Other
 *.user
-*.suo
-*.vs/

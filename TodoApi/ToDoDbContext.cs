@@ -39,6 +39,7 @@ public partial class ToDoDbContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
+            entity.Property(e => e.UserId).HasColumnName("user_id");  // חדש
         });
 
         // הוספנו את ההגדרה לטבלת המשתמשים

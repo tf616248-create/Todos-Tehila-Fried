@@ -24,7 +24,14 @@ export default function Register() {
       const response = await api.register(username, password);
       if (response && response.data) {
         alert("המשתמש נוצר בהצלחה!");
-        navigate("/login");
+        const loginRes = await api.login(username, password);
+        if (loginRes?.data?.token) {
+          localStorage.setItem("token", loginRes.data.token);
+          navigate("/tasks"); // עכשיו token כבר נשמר
+        } else {
+          setError("לא התקבל טוקן לאחר הרישום");
+        }
+        // navigate("/login");
       }
     } catch (err) {
       console.error("Registration error:", err);
@@ -71,8 +78,13 @@ export default function Register() {
         </button>
         
         <div style={styles.loginLink}>
-          כבר יש לך חשבון? <Link to="/login" style={styles.link}>התחבר כאן</Link>
-        </div>
+        <Link 
+  to="/login" 
+  onClick={() => localStorage.removeItem("token")}
+  style={styles.link}
+>
+  כבר יש לך חשבון? התחבר כאן
+</Link>        </div>
       </form>
     </div>
   );

@@ -5,7 +5,7 @@ const apiUrl = "http://localhost:5024/api";
 // יצירת instance של axios
 const apiClient = axios.create({
   baseURL: apiUrl,
-  withCredentials: true
+  // withCredentials: true
 });
 
 // --- מוסיפים JWT ל־headers אם קיים ---
@@ -36,9 +36,11 @@ export const api = {
   },
   
   // התחברות משתמש
-  login(username, password) {
-    return apiClient.post("/users/login", { username, password }, { withCredentials: true });
-  },
+   login(username, password) {
+  //   // return apiClient.post("/users/login", { username, password }, { withCredentials: true });
+     return apiClient.post("/users/login", { username, password });
+
+   },
 
   // שליפת משימות (דורש JWT)
   getTasks: async () => {
@@ -53,5 +55,8 @@ export const api = {
   },
   setCompleted: async (id, isComplete) => {
     return apiClient.patch(`/items/${id}`, { isComplete });
+  },
+  deleteTask: async (id) => {
+    return apiClient.delete(`/items/${id}`);
   },
 };
