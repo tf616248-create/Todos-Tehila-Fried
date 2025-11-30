@@ -1,0 +1,11 @@
+# React
+ToDoListReact/node_modules/
+ToDoListReact/build/
+
+# .NET
+TodoApi/bin/
+TodoApi/obj/
+TodoApi/.vs/
+
+# Other
+*.user
