@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:5024/api";
+const apiUrl = "`${process.env.REACT_APP_API_URL}/tasks`";
 
 // יצירת instance של axios
 const apiClient = axios.create({
