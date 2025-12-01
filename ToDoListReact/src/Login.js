@@ -21,7 +21,13 @@ export default function Login() {
     try {
       // קריאה ל־API להתחברות
       const response = await api.login(username, password);
-      
+      //??????????????????????????????
+      console.log("=== Response Details ===");
+      console.log("response מלא:", response);
+      console.log("response.data:", response.data);
+      console.log("response.status:", response.status);
+      console.log("response.headers:", response.headers);
+      //??????????????????????/
       if (response && response.data && response.data.token) {
         // שמירת JWT ב-localStorage
         localStorage.setItem("token", response.data.token);
