@@ -80,7 +80,6 @@ export default function Register() {
         <div style={styles.loginLink}>
         <Link 
   to="/login" 
-  onClick={() => localStorage.removeItem("token")}
   style={styles.link}
 >
   כבר יש לך חשבון? התחבר כאן
