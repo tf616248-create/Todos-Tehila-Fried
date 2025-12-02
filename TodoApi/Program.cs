@@ -217,10 +217,11 @@ var allowedOrigins = builder.Configuration
     .GetSection("AllowedOrigins")
     .Get<string[]>() 
     ?? new[] { "http://localhost:3000" };
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
-        policy.WithOrigins("http://localhost:3000", "http://localhost:3001", "http://localhost:3002")
+        policy.WithOrigins(allowedOrigins)  // 👈 השתמש במשתנה!
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials());
