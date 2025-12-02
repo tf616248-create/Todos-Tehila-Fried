@@ -69,6 +69,8 @@ const apiUrl = "https://todoapi-iy8f.onrender.com";
 console.log("TYPE:", typeof apiUrl);  // צריך להדפיס "string"
 console.log("VALUE:", apiUrl);        // צריך להדפיס את ה-URL
 console.log("OBJECT:", {apiUrl});
+console.log("LENGTH:", apiUrl.length);  // צריך להיות 39
+console.log("TRIMMED:", apiUrl.trim()); // צריך להיות ה-URL
 
 
 // יצירת instance של axios
