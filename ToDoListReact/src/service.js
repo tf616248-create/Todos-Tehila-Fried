@@ -65,11 +65,10 @@
 
 import axios from "axios";
 
-// Base URL של ה־backend (ללא /tasks או /users)
 const apiUrl = "https://todoapi-iy8f.onrender.com";
-console.log("API BASE URL =", {apiUrl});
-console.log(`API BASE URL = ${apiUrl}`);
-console.log("API BASE URL =", apiUrl);
+console.log("TYPE:", typeof apiUrl);  // צריך להדפיס "string"
+console.log("VALUE:", apiUrl);        // צריך להדפיס את ה-URL
+console.log("OBJECT:", {apiUrl});
 
 
 // יצירת instance של axios
