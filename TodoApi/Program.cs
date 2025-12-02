@@ -213,6 +213,10 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
 );
 
 // --- CORS ---
+var allowedOrigins = builder.Configuration
+    .GetSection("AllowedOrigins")
+    .Get<string[]>() 
+    ?? new[] { "http://localhost:3000" };
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
