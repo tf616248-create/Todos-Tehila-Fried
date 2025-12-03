@@ -283,9 +283,9 @@ export default function Register() {
         </button>
 
         <div style={styles.loginLink}>
-          <Link to="/login" style={styles.link}>
-            כבר יש לך חשבון? התחבר כאן
-          </Link>
+          // <Link to="/login" style={styles.link}>
+          //   כבר יש לך חשבון? התחבר כאן
+          // </Link>
         </div>
       </div>
     </div>
