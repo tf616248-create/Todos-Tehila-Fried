@@ -46,46 +46,87 @@ export default function Register() {
 
   return (
     <div style={styles.container}>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <h2 style={styles.title}>הרשמה</h2>
-        
-        {error && <div style={styles.error}>{error}</div>}
-        
-        <input
-          type="text"
-          placeholder="שם משתמש"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={styles.input}
-          dir="rtl"
-        />
-        
-        <input
-          type="password"
-          placeholder="סיסמה"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
-          dir="rtl"
-        />
-        
-        <button 
-          type="submit" 
-          style={styles.button}
-          disabled={isLoading}
-        >
-          {isLoading ? 'מבצע הרשמה...' : 'הרשם'}
-        </button>
-        
-        <div style={styles.loginLink}>
-        <Link 
-  to="/login" 
-  style={styles.link}
->
-  כבר יש לך חשבון? התחבר כאן
-</Link>        </div>
-      </form>
+  <div style={styles.form}>
+    <h2 style={styles.title}>הרשמה</h2>
+    
+    {error && <div style={styles.error}>{error}</div>}
+    
+    <input
+      type="text"
+      placeholder="שם משתמש"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+      style={styles.input}
+      dir="rtl"
+    />
+    
+    <input
+      type="password"
+      placeholder="סיסמה"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      style={styles.input}
+      dir="rtl"
+    />
+    
+    <button 
+      type="button"
+      onClick={handleSubmit}
+      style={styles.button}
+      disabled={isLoading}
+    >
+      {isLoading ? 'מבצע הרשמה...' : 'הרשם'}
+    </button>
+    
+    <div style={styles.loginLink}>
+      <Link to="/login" style={styles.link}>
+        כבר יש לך חשבון? התחבר כאן
+      </Link>
     </div>
+  </div>
+</div>
+
+//     <div style={styles.container}>
+//       <form onSubmit={handleSubmit} style={styles.form}>
+//         <h2 style={styles.title}>הרשמה</h2>
+        
+//         {error && <div style={styles.error}>{error}</div>}
+        
+//         <input
+//           type="text"
+//           placeholder="שם משתמש"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//           style={styles.input}
+//           dir="rtl"
+//         />
+        
+//         <input
+//           type="password"
+//           placeholder="סיסמה"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           style={styles.input}
+//           dir="rtl"
+//         />
+        
+//         <button 
+//           type="submit" 
+//           style={styles.button}
+//           disabled={isLoading}
+//         >
+//           {isLoading ? 'מבצע הרשמה...' : 'הרשם'}
+//         </button>
+        
+//         <div style={styles.loginLink}>
+//         <Link 
+//   to="/login" 
+//   style={styles.link}
+// >
+//   כבר יש לך חשבון? התחבר כאן
+// </Link>        </div>
+//       </form>
+//     </div>
   );
 }
 
