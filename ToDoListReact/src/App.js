@@ -12,7 +12,13 @@ function RedirectToRegister() {
   const navigate = useNavigate();
   
   useEffect(() => {
-    navigate("/register");
+     const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/tasks");   // אם יש טוקן — הוא כבר רשום/מחובר
+    } else {
+      navigate("/register"); // אם אין טוקן — הפניה לרישום
+    }
   }, [navigate]);
   
   return null;
